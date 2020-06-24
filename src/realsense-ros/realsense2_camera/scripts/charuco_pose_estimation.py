@@ -24,6 +24,17 @@ class PoseEstimator:
             "markerLength" : 0.008,
             "dictionary" : cv2.aruco.Dictionary_get(cv2.aruco.DICT_7X7_50)
         }
+        self.offset = {
+            "tx" : 0.03,
+            "ty" : -0.0275,
+            "tz" : -0.05265,
+            "rx" : 0,
+            "ry" : 0,
+            "rz" : 0
+        }
+        
+        self.filter_rx = True
+        self.rx_correction = -3.14159
 
         self.bridge = CvBridge()
         self.charuco_board = self.create_charuco_board(self.charuco_config)
@@ -78,12 +89,15 @@ class PoseEstimator:
     def publish_pose(self, tvec, rvec):
         '''Publishes the estimated pose from the charuco board to a ROS topic'''
         command = EstimatedPose()
-        command.tx = tvec[0]
-        command.ty = tvec[1]
-        command.tz = tvec[2]
-        command.rx = rvec[0]
-        command.ry = rvec[1]
-        command.rz = rvec[2]
+        command.tx = tvec[0] + self.offset["tx"]
+        command.ty = tvec[1] + self.offset["ty"]
+        command.tz = tvec[2] + self.offset["tz"]
+        if self.filter_rx:
+            command.rx = numpy.abs(rvec[0]) + self.rx_correction
+        else:
+            command.rx = rvec[0] + self.offset["rx"]
+        command.ry = rvec[1] + self.offset["ry"]
+        command.rz = rvec[2] + self.offset["rz"]
         self.pose_publisher.publish(command)
 
 if __name__ == "__main__":
