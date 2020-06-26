@@ -33,7 +33,19 @@ class PoseEstimator:
             "rz" : 0
         }
         
-        self.filter_rx = True
+        self.filter = True
+        self.N = 5
+        self.tx_raws = list(numpy.zeros(self.N))
+        self.ty_raws = list(numpy.zeros(self.N))
+        self.tz_raws = list(numpy.zeros(self.N))
+        self.rx_raws = list(numpy.zeros(self.N))
+        self.ry_raws = list(numpy.zeros(self.N))
+        self.rz_raws = list(numpy.zeros(self.N))
+
+        self.tvec_filtered = numpy.zeros((3,1))
+        self.rvec_filtered = numpy.zeros((3,1))
+
+        self.correct_rx = True
         self.rx_correction = -3.14159
 
         self.bridge = CvBridge()
@@ -86,18 +98,42 @@ class PoseEstimator:
         self.camera_matrix = numpy.array(data.K).reshape(3,3)
         self.distortion_coefficients = numpy.array(data.D).reshape(5,)
 
+    def filter_pose(self, tvec, rvec):
+        '''Running Mean Filter for estimated pose'''
+        if self.filter:
+            tvec_raw = [self.tx_raws, self.ty_raws, self.tz_raws]
+            rvec_raw = [self.rx_raws, self.ry_raws, self.rz_raws]
+            i = 0
+            j = 0 
+
+            for t in tvec_raw:
+                t.append(tvec[i])
+                t.pop(0)
+                self.tvec_filtered[i] = numpy.mean(t)
+                i += 1
+            for r in rvec_raw:
+                r.append(tvec[j])
+                r.pop(0)
+                self.rvec_filtered[j] = numpy.mean(r)
+                j += 1
+            return self.tvec_filtered, self.rvec_filtered
+        else:
+            return tvec, rvec
+
     def publish_pose(self, tvec, rvec):
         '''Publishes the estimated pose from the charuco board to a ROS topic'''
+
+        tvecF, rvecF = self.filter_pose(tvec, rvec)
         command = EstimatedPose()
-        command.tx = tvec[0] + self.offset["tx"]
-        command.ty = tvec[1] + self.offset["ty"]
-        command.tz = tvec[2] + self.offset["tz"]
-        if self.filter_rx:
-            command.rx = numpy.abs(rvec[0]) + self.rx_correction
+        command.tx = tvecF[0] + self.offset["tx"]
+        command.ty = tvecF[1] + self.offset["ty"]
+        command.tz = tvecF[2] + self.offset["tz"]
+        if self.correct_rx:
+            command.rx = numpy.abs(rvecF[0]) + self.rx_correction
         else:
-            command.rx = rvec[0] + self.offset["rx"]
-        command.ry = rvec[1] + self.offset["ry"]
-        command.rz = rvec[2] + self.offset["rz"]
+            command.rx = rvecF[0] + self.offset["rx"]
+        command.ry = rvecF[1] + self.offset["ry"]
+        command.rz = rvecF[2] + self.offset["rz"]
         self.pose_publisher.publish(command)
 
 if __name__ == "__main__":
