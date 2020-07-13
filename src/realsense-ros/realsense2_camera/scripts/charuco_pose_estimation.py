@@ -45,7 +45,7 @@ class PoseEstimator:
         self.tvec_filtered = numpy.zeros((3,1))
         self.rvec_filtered = numpy.zeros((3,1))
 
-        self.correct_rx = True
+        self.correct_rx = False
         self.rx_correction = -3.14159
 
         self.bridge = CvBridge()

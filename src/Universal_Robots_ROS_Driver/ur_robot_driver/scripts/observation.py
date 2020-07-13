@@ -9,9 +9,13 @@ from realsense2_camera.msg import EstimatedPose
 from realsense2_camera.msg import CustomVector
 
 def normalize_rad(angles):
+    ''' '''
     angles = numpy.array(angles)
+    # 1. reduce the angles
     angles = angles % (2*numpy.pi)
+    # 2. force it to be the positive remainder, so that 0 <= angle < 360 (2pi)
     angles = (angles + 2*numpy.pi) % (2*numpy.pi)
+    # 3. force into the minimum absolute value residue class, so that -180 (-pi) < angle <= 180 (pi)
     for i in range(len(angles)):
         if (angles[i] > numpy.pi):
             angles[i] -= 2*numpy.pi
