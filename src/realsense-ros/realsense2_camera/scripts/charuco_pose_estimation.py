@@ -32,6 +32,8 @@ class PoseEstimator:
             "ry" : 0,
             "rz" : 0
         }
+
+        self.cos_transformation = True
         
         self.filter = True
         self.N = 5
@@ -80,11 +82,11 @@ class PoseEstimator:
             else:
                 cv2.imshow("Charuco", cv_image)
                 #return numpy.zeros(3), numpy.zeros(3)
-                return previous_translation_vector, previous_rotation_vector
+                return self.previous_translation_vector, self.previous_rotation_vector
         else:
             cv2.imshow("Charuco, cv_image")
-            #return numpy.zeros(3), numpy.zeros(3)
-            return previous_translation_vector, previous_rotation_vector
+            return numpy.zeros(3), numpy.zeros(3)
+            #return self.previous_translation_vector, self.previous_rotation_vector
 
     def image_callback(self, ros_image):
         '''Callback function for the subscription of the ROS topic /camera/color/image_raw (sensor_msgs Image)'''
@@ -125,15 +127,28 @@ class PoseEstimator:
 
         tvecF, rvecF = self.filter_pose(tvec, rvec)
         command = EstimatedPose()
-        command.tx = tvecF[0] + self.offset["tx"]
-        command.ty = tvecF[1] + self.offset["ty"]
-        command.tz = tvecF[2] + self.offset["tz"]
-        if self.correct_rx:
-            command.rx = numpy.abs(rvecF[0]) + self.rx_correction
+        tx = tvecF[0] + self.offset["tx"]
+        ty = tvecF[1] + self.offset["ty"]
+        tz = tvecF[2] + self.offset["tz"]
+        rx = rvecF[0] + self.offset["rx"]
+        ry = rvecF[1] + self.offset["ry"]
+        rz = rvecF[2] + self.offset["rz"]
+
+        if self.cos_transformation:
+            command.tx = -tz
+            command.ty = tx
+            command.tz = -ty
+            command.rx = -rz
+            command.ry = rx
+            command.rz = -ry
         else:
-            command.rx = rvecF[0] + self.offset["rx"]
-        command.ry = rvecF[1] + self.offset["ry"]
-        command.rz = rvecF[2] + self.offset["rz"]
+            command.tx = tx
+            command.ty = ty
+            command.tz = tz
+            command.rx = rx
+            command.ry = ry
+            command.rz = rz
+
         self.pose_publisher.publish(command)
 
 if __name__ == "__main__":
