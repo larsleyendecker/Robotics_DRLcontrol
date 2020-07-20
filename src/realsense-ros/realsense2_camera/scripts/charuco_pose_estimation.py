@@ -48,7 +48,7 @@ class PoseEstimator:
         self.rvec_filtered = numpy.zeros((3,1))
 
         self.correct_rx = False
-        self.rx_correction = -3.14159
+        self.rx_correction = -0.18
 
         self.bridge = CvBridge()
         self.charuco_board = self.create_charuco_board(self.charuco_config)
@@ -132,14 +132,14 @@ class PoseEstimator:
         tz = tvecF[2] + self.offset["tz"]
         rx = rvecF[0] + self.offset["rx"]
         ry = rvecF[1] + self.offset["ry"]
-        rz = rvecF[2] + self.offset["rz"]
+        rz = rvecF[2] + self.offset["rz"] + self.rx_correction
 
         if self.cos_transformation:
             command.tx = -tz
             command.ty = tx
-            command.tz = -ty
+            command.tz = ty
             command.rx = -rz
-            command.ry = rx
+            command.ry = -rx
             command.rz = -ry
         else:
             command.tx = tx
