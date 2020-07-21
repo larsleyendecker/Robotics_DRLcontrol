@@ -32,6 +32,14 @@ class PoseEstimator:
             "ry" : 0,
             "rz" : 0
         }
+        self.correction = {
+            "tx" : 0.002,
+            "ty" : -0.0016,
+            "tz" : -0.0026,
+            "rx" : 0,
+            "ry" : 0,
+            "rz" : 0,
+        }
 
         self.cos_transformation = True
         
@@ -61,6 +69,8 @@ class PoseEstimator:
         # Initializing previous vectors
         self.previous_translation_vector = numpy.zeros(3,)
         self.previous_rotation_vector = numpy.zeros(3,)
+        self.previous_tvec = numpy.zeros(3,)
+        self.previous_rvec = numpy.zeros(3,)
 
     def create_charuco_board(self, config):
         '''Creates and returns a charuco board with the given configuration'''
@@ -70,29 +80,34 @@ class PoseEstimator:
         '''Does the pose estimation using the charuco board (chessboard + aruco marker) in the given configuration'''
         corners, ids, _ = cv2.aruco.detectMarkers(cv_image, self.charuco_config["dictionary"], parameters=self.params)
         if ids is not None:
-            _, charuco_corners, charuco_ids = cv2.aruco.interpolateCornersCharuco(corners, ids, cv_image, self.charuco_board, minMarkers=1)
+            charuco_retval, charuco_corners, charuco_ids = cv2.aruco.interpolateCornersCharuco(corners, ids, cv_image, self.charuco_board, minMarkers=1)
             cv2.aruco.drawDetectedCornersCharuco(cv_image, charuco_corners, charuco_ids)
             retval, rotation_vector, translation_vector = cv2.aruco.estimatePoseCharucoBoard(charuco_corners, charuco_ids, self.charuco_board, self.camera_matrix, self.distortion_coefficients, None, None)
             if retval == True:
                 cv2.aruco.drawAxis(cv_image, self.camera_matrix, self.distortion_coefficients, rotation_vector, translation_vector, 0.03)
                 cv2.imshow("Charuco", cv_image)
-                self.previous_translation_vector = translation_vector
-                self.previous_rotation_vector = rotation_vector
+                #self.previous_translation_vector = translation_vector
+                #self.previous_rotation_vector = rotation_vector
                 return translation_vector, rotation_vector
             else:
                 cv2.imshow("Charuco", cv_image)
                 #return numpy.zeros(3), numpy.zeros(3)
-                return self.previous_translation_vector, self.previous_rotation_vector
+                return None, None #numpy.zeros(3), numpy.zeros(3) # None, None #self.previous_translation_vector, self.previous_rotation_vector
         else:
-            cv2.imshow("Charuco, cv_image")
-            return numpy.zeros(3), numpy.zeros(3)
-            #return self.previous_translation_vector, self.previous_rotation_vector
+            cv2.imshow("Charuco", cv_image)
+            #return numpy.zeros(3), numpy.zeros(3)
+            return None, None #numpy.zeros(3), numpy.zeros(3) #None, None #self.previous_translation_vector, self.previous_rotation_vector
 
     def image_callback(self, ros_image):
         '''Callback function for the subscription of the ROS topic /camera/color/image_raw (sensor_msgs Image)'''
         cv_image = self.bridge.imgmsg_to_cv2(ros_image, "bgr8")
         tvec, rvec = self.charuco_pose_estimation(cv_image)
-        self.publish_pose(tvec, rvec)
+        if tvec is None:
+            self.publish_pose(self.previous_tvec, self.previous_rvec)
+        else:
+            self.previous_tvec = tvec
+            self.previous_rvec = rvec
+            self.publish_pose(tvec, rvec)
         cv2.waitKey(1)
 
     def calibration_callback(self, data):
@@ -127,7 +142,7 @@ class PoseEstimator:
 
         tvecF, rvecF = self.filter_pose(tvec, rvec)
         command = EstimatedPose()
-        tx = tvecF[0] + self.offset["tx"]
+        tx = tvecF[0] + self.offset["tx"] #- 0.18
         ty = tvecF[1] + self.offset["ty"]
         tz = tvecF[2] + self.offset["tz"]
         rx = rvecF[0] + self.offset["rx"]
@@ -135,12 +150,12 @@ class PoseEstimator:
         rz = rvecF[2] + self.offset["rz"] + self.rx_correction
 
         if self.cos_transformation:
-            command.tx = -tz
-            command.ty = tx
-            command.tz = ty
-            command.rx = -rz
-            command.ry = -rx
-            command.rz = -ry
+            command.tx = -tz + self.correction["tx"]
+            command.ty = tx + self.correction["ty"]
+            command.tz = ty + self.correction["tz"]
+            command.rx = -rz + self.correction["rx"]
+            command.ry = -rx + self.correction["ry"]
+            command.rz = -ry + self.correction["rz"]
         else:
             command.tx = tx
             command.ty = ty
