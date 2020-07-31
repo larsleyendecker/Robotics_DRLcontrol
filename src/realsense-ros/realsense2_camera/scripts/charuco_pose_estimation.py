@@ -129,7 +129,7 @@ class PoseEstimator:
                 self.tvec_filtered[i] = numpy.mean(t)
                 i += 1
             for r in rvec_raw:
-                r.append(tvec[j])
+                r.append(rvec[j])
                 r.pop(0)
                 self.rvec_filtered[j] = numpy.mean(r)
                 j += 1
