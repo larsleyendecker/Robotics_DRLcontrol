@@ -34,7 +34,7 @@ class Observator():
     def __init__(self):
         '''Observator constructor'''
         self.HOME = os.getenv("HOME")
-        self.MODEL_PATH = os.path.join(*[self.HOME, "DRL_AI4RoMoCo", "code", "environment", "UR10", "ur10_heg.xml"])
+        self.MODEL_PATH = os.path.join(*[self.HOME, "DRL_AI4RoMoCo", "code", "environment", "UR10_single", "ur10_heg.xml"])
         self.q_init = numpy.array([0, -1.3, 2.1, -0.80, 1.5708, 0.0])
         self.goal = numpy.array([0.69423743, -0.83110109,  1.17388998, -1.57161506,  0.02185773, -3.14102438])
 
