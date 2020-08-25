@@ -9,7 +9,7 @@ import struct
 class ToolDataMsg(genpy.Message):
   _md5sum = "404fc266f37d89f75b372d12fa94a122"
   _type = "ur_msgs/ToolDataMsg"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """# This data structure contains the ToolData structure
 # used by the Universal Robots controller
 
@@ -57,7 +57,7 @@ uint8 tool_mode # one of TOOL_*
     """
     if args or kwds:
       super(ToolDataMsg, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.analog_input_range2 is None:
         self.analog_input_range2 = 0
       if self.analog_input_range3 is None:
@@ -117,7 +117,7 @@ uint8 tool_mode # one of TOOL_*
       (_x.analog_input_range2, _x.analog_input_range3, _x.analog_input2, _x.analog_input3, _x.tool_voltage_48v, _x.tool_output_voltage, _x.tool_current, _x.tool_temperature, _x.tool_mode,) = _get_struct_2b2dfB2fB().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -146,7 +146,7 @@ uint8 tool_mode # one of TOOL_*
       (_x.analog_input_range2, _x.analog_input_range3, _x.analog_input2, _x.analog_input3, _x.tool_voltage_48v, _x.tool_output_voltage, _x.tool_current, _x.tool_temperature, _x.tool_mode,) = _get_struct_2b2dfB2fB().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

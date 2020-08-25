@@ -159,8 +159,8 @@ struct Definition< ::ur_dashboard_msgs::IsProgramRunningResponse_<ContainerAlloc
   static const char* value()
   {
     return "string answer\n"
-"bool program_running\n"
-"bool success\n"
+"bool program_running # is a program running?\n"
+"bool success # Did the dashboard server call succeed?\n"
 "\n"
 ;
   }

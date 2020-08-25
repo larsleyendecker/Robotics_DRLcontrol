@@ -10,7 +10,7 @@ import std_msgs.msg
 class Extrinsics(genpy.Message):
   _md5sum = "3627b43073f4cd5dd6dc179a49eda2ad"
   _type = "realsense2_camera/Extrinsics"
-  _has_header = True #flag to mark the presence of a Header object
+  _has_header = True  # flag to mark the presence of a Header object
   _full_text = """std_msgs/Header header
 float64[9] rotation
 float64[3] translation
@@ -50,7 +50,7 @@ string frame_id
     """
     if args or kwds:
       super(Extrinsics, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.header is None:
         self.header = std_msgs.msg.Header()
       if self.rotation is None:
@@ -117,7 +117,7 @@ string frame_id
       self.translation = _get_struct_3d().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -171,7 +171,7 @@ string frame_id
       self.translation = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=3)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():
@@ -183,15 +183,15 @@ def _get_struct_3I():
     if _struct_3I is None:
         _struct_3I = struct.Struct("<3I")
     return _struct_3I
-_struct_9d = None
-def _get_struct_9d():
-    global _struct_9d
-    if _struct_9d is None:
-        _struct_9d = struct.Struct("<9d")
-    return _struct_9d
 _struct_3d = None
 def _get_struct_3d():
     global _struct_3d
     if _struct_3d is None:
         _struct_3d = struct.Struct("<3d")
     return _struct_3d
+_struct_9d = None
+def _get_struct_9d():
+    global _struct_9d
+    if _struct_9d is None:
+        _struct_9d = struct.Struct("<9d")
+    return _struct_9d

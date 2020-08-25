@@ -9,7 +9,7 @@ import struct
 class RobotMode(genpy.Message):
   _md5sum = "73b72d58742c4889c47118411b03a3b4"
   _type = "ur_dashboard_msgs/RobotMode"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """int8 NO_CONTROLLER=-1
 int8 DISCONNECTED=0
 int8 CONFIRM_SAFETY=1
@@ -55,7 +55,7 @@ int8 mode
     """
     if args or kwds:
       super(RobotMode, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.mode is None:
         self.mode = 0
     else:
@@ -73,7 +73,8 @@ int8 mode
     :param buff: buffer, ``StringIO``
     """
     try:
-      buff.write(_get_struct_b().pack(self.mode))
+      _x = self.mode
+      buff.write(_get_struct_b().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -89,7 +90,7 @@ int8 mode
       (self.mode,) = _get_struct_b().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -99,7 +100,8 @@ int8 mode
     :param numpy: numpy python module
     """
     try:
-      buff.write(_get_struct_b().pack(self.mode))
+      _x = self.mode
+      buff.write(_get_struct_b().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -116,7 +118,7 @@ int8 mode
       (self.mode,) = _get_struct_b().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

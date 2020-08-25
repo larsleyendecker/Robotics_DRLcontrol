@@ -9,7 +9,7 @@ import struct
 class TF2Error(genpy.Message):
   _md5sum = "bc6848fd6fd750c92e38575618a4917d"
   _type = "tf2_msgs/TF2Error"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """uint8 NO_ERROR = 0
 uint8 LOOKUP_ERROR = 1
 uint8 CONNECTIVITY_ERROR = 2
@@ -49,7 +49,7 @@ string error_string
     """
     if args or kwds:
       super(TF2Error, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.error is None:
         self.error = 0
       if self.error_string is None:
@@ -70,7 +70,8 @@ string error_string
     :param buff: buffer, ``StringIO``
     """
     try:
-      buff.write(_get_struct_B().pack(self.error))
+      _x = self.error
+      buff.write(_get_struct_B().pack(_x))
       _x = self.error_string
       length = len(_x)
       if python3 or type(_x) == unicode:
@@ -101,7 +102,7 @@ string error_string
         self.error_string = str[start:end]
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -111,7 +112,8 @@ string error_string
     :param numpy: numpy python module
     """
     try:
-      buff.write(_get_struct_B().pack(self.error))
+      _x = self.error
+      buff.write(_get_struct_B().pack(_x))
       _x = self.error_string
       length = len(_x)
       if python3 or type(_x) == unicode:
@@ -143,7 +145,7 @@ string error_string
         self.error_string = str[start:end]
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

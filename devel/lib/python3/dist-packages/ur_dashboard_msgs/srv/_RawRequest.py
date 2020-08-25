@@ -9,8 +9,8 @@ import struct
 class RawRequestRequest(genpy.Message):
   _md5sum = "6490a46152f373285fe18f491ed93702"
   _type = "ur_dashboard_msgs/RawRequestRequest"
-  _has_header = False #flag to mark the presence of a Header object
-  _full_text = """
+  _has_header = False  # flag to mark the presence of a Header object
+  _full_text = """# This service is there to support any dashboard query not explicitly supported
 string query
 """
   __slots__ = ['query']
@@ -32,7 +32,7 @@ string query
     """
     if args or kwds:
       super(RawRequestRequest, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.query is None:
         self.query = ''
     else:
@@ -77,7 +77,7 @@ string query
         self.query = str[start:end]
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -115,7 +115,7 @@ string query
         self.query = str[start:end]
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():
@@ -132,7 +132,7 @@ import struct
 class RawRequestResponse(genpy.Message):
   _md5sum = "d7e708f879c94bb931716d8f4f130f30"
   _type = "ur_dashboard_msgs/RawRequestResponse"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """string answer
 
 """
@@ -155,7 +155,7 @@ class RawRequestResponse(genpy.Message):
     """
     if args or kwds:
       super(RawRequestResponse, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.answer is None:
         self.answer = ''
     else:
@@ -200,7 +200,7 @@ class RawRequestResponse(genpy.Message):
         self.answer = str[start:end]
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -238,7 +238,7 @@ class RawRequestResponse(genpy.Message):
         self.answer = str[start:end]
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

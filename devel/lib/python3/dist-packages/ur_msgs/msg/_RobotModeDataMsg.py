@@ -9,7 +9,7 @@ import struct
 class RobotModeDataMsg(genpy.Message):
   _md5sum = "867308ca39e2cc0644b50db27deb661f"
   _type = "ur_msgs/RobotModeDataMsg"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """# This data structure contains the RobotModeData structure
 # used by the Universal Robots controller
 #
@@ -45,7 +45,7 @@ bool is_program_paused
     """
     if args or kwds:
       super(RobotModeDataMsg, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.timestamp is None:
         self.timestamp = 0
       if self.is_robot_connected is None:
@@ -109,7 +109,7 @@ bool is_program_paused
       self.is_program_paused = bool(self.is_program_paused)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -145,7 +145,7 @@ bool is_program_paused
       self.is_program_paused = bool(self.is_program_paused)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

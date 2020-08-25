@@ -9,7 +9,7 @@ import struct
 class IsProgramSavedRequest(genpy.Message):
   _md5sum = "d41d8cd98f00b204e9800998ecf8427e"
   _type = "ur_dashboard_msgs/IsProgramSavedRequest"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """"""
   __slots__ = []
   _slot_types = []
@@ -56,7 +56,7 @@ class IsProgramSavedRequest(genpy.Message):
       end = 0
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -80,7 +80,7 @@ class IsProgramSavedRequest(genpy.Message):
       end = 0
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():
@@ -97,11 +97,11 @@ import struct
 class IsProgramSavedResponse(genpy.Message):
   _md5sum = "e922e4e4f5e4157c23417860c8b2336a"
   _type = "ur_dashboard_msgs/IsProgramSavedResponse"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """string answer
 string program_name
-bool program_saved
-bool success
+bool program_saved # is the current program saved?
+bool success # Did the dashboard server call succeed?
 
 """
   __slots__ = ['answer','program_name','program_saved','success']
@@ -123,7 +123,7 @@ bool success
     """
     if args or kwds:
       super(IsProgramSavedResponse, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.answer is None:
         self.answer = ''
       if self.program_name is None:
@@ -200,7 +200,7 @@ bool success
       self.success = bool(self.success)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -261,7 +261,7 @@ bool success
       self.success = bool(self.success)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

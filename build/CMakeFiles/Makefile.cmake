@@ -466,8 +466,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/opt/ros/melodic/share/trajectory_msgs/cmake/trajectory_msgsConfig.cmake"
   "/opt/ros/melodic/share/urdf/cmake/urdfConfig-version.cmake"
   "/opt/ros/melodic/share/urdf/cmake/urdfConfig.cmake"
-  "/opt/ros/melodic/share/urdfdom_py/cmake/urdfdom_pyConfig-version.cmake"
-  "/opt/ros/melodic/share/urdfdom_py/cmake/urdfdom_pyConfig.cmake"
   "/opt/ros/melodic/share/visualization_msgs/cmake/visualization_msgs-msg-extras.cmake"
   "/opt/ros/melodic/share/visualization_msgs/cmake/visualization_msgsConfig-version.cmake"
   "/opt/ros/melodic/share/visualization_msgs/cmake/visualization_msgsConfig.cmake"

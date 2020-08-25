@@ -118,7 +118,7 @@
 (setf (get ur_dashboard_msgs::LoadRequest :md5sum-) "abbee7d5c683c0b3af261ba331da1fbb")
 (setf (get ur_dashboard_msgs::LoadRequest :datatype-) "ur_dashboard_msgs/LoadRequest")
 (setf (get ur_dashboard_msgs::LoadRequest :definition-)
-      "
+      "# Service to load programs or installations
 string filename
 ---
 string answer
@@ -129,7 +129,7 @@ bool success
 (setf (get ur_dashboard_msgs::LoadResponse :md5sum-) "abbee7d5c683c0b3af261ba331da1fbb")
 (setf (get ur_dashboard_msgs::LoadResponse :datatype-) "ur_dashboard_msgs/LoadResponse")
 (setf (get ur_dashboard_msgs::LoadResponse :definition-)
-      "
+      "# Service to load programs or installations
 string filename
 ---
 string answer

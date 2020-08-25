@@ -130,10 +130,10 @@
   "290f0cb02c3a44353957f0a92f954209")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<IsProgramRunning-response>)))
   "Returns full string definition for message of type '<IsProgramRunning-response>"
-  (cl:format cl:nil "string answer~%bool program_running~%bool success~%~%~%~%"))
+  (cl:format cl:nil "string answer~%bool program_running # is a program running?~%bool success # Did the dashboard server call succeed?~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'IsProgramRunning-response)))
   "Returns full string definition for message of type 'IsProgramRunning-response"
-  (cl:format cl:nil "string answer~%bool program_running~%bool success~%~%~%~%"))
+  (cl:format cl:nil "string answer~%bool program_running # is a program running?~%bool success # Did the dashboard server call succeed?~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <IsProgramRunning-response>))
   (cl:+ 0
      4 (cl:length (cl:slot-value msg 'answer))

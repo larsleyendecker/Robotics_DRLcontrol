@@ -121,8 +121,8 @@
 (setf (get ur_dashboard_msgs::IsProgramRunningRequest :definition-)
       "---
 string answer
-bool program_running
-bool success
+bool program_running # is a program running?
+bool success # Did the dashboard server call succeed?
 
 ")
 
@@ -131,8 +131,8 @@ bool success
 (setf (get ur_dashboard_msgs::IsProgramRunningResponse :definition-)
       "---
 string answer
-bool program_running
-bool success
+bool program_running # is a program running?
+bool success # Did the dashboard server call succeed?
 
 ")
 

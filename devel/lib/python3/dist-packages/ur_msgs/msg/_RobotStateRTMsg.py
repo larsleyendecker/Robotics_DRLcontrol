@@ -9,7 +9,7 @@ import struct
 class RobotStateRTMsg(genpy.Message):
   _md5sum = "ce6feddd3ccb4ca7dbcd0ff105b603c7"
   _type = "ur_msgs/RobotStateRTMsg"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """# Data structure for the realtime communications interface (aka Matlab interface)
 # used by the Universal Robots controller
 # 
@@ -57,7 +57,7 @@ float64[] joint_modes
     """
     if args or kwds:
       super(RobotStateRTMsg, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.time is None:
         self.time = 0.
       if self.q_target is None:
@@ -129,7 +129,8 @@ float64[] joint_modes
     :param buff: buffer, ``StringIO``
     """
     try:
-      buff.write(_get_struct_d().pack(self.time))
+      _x = self.time
+      buff.write(_get_struct_d().pack(_x))
       length = len(self.q_target)
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
@@ -178,7 +179,8 @@ float64[] joint_modes
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
       buff.write(struct.pack(pattern, *self.tcp_speed))
-      buff.write(_get_struct_d().pack(self.digital_input_bits))
+      _x = self.digital_input_bits
+      buff.write(_get_struct_d().pack(_x))
       length = len(self.motor_temperatures)
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
@@ -309,7 +311,7 @@ float64[] joint_modes
       self.joint_modes = struct.unpack(pattern, str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -319,7 +321,8 @@ float64[] joint_modes
     :param numpy: numpy python module
     """
     try:
-      buff.write(_get_struct_d().pack(self.time))
+      _x = self.time
+      buff.write(_get_struct_d().pack(_x))
       length = len(self.q_target)
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
@@ -368,7 +371,8 @@ float64[] joint_modes
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
       buff.write(self.tcp_speed.tostring())
-      buff.write(_get_struct_d().pack(self.digital_input_bits))
+      _x = self.digital_input_bits
+      buff.write(_get_struct_d().pack(_x))
       length = len(self.motor_temperatures)
       buff.write(_struct_I.pack(length))
       pattern = '<%sd'%length
@@ -500,7 +504,7 @@ float64[] joint_modes
       self.joint_modes = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

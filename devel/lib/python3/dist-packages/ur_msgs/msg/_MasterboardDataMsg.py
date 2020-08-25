@@ -9,7 +9,7 @@ import struct
 class MasterboardDataMsg(genpy.Message):
   _md5sum = "807af5dc427082b111fa23d1fd2cd585"
   _type = "ur_msgs/MasterboardDataMsg"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """# This data structure contains the MasterboardData structure
 # used by the Universal Robots controller
 #
@@ -57,7 +57,7 @@ uint8 master_onoff_state
     """
     if args or kwds:
       super(MasterboardDataMsg, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.digital_input_bits is None:
         self.digital_input_bits = 0
       if self.digital_output_bits is None:
@@ -138,7 +138,7 @@ uint8 master_onoff_state
       (_x.digital_input_bits, _x.digital_output_bits, _x.analog_input_range0, _x.analog_input_range1, _x.analog_input0, _x.analog_input1, _x.analog_output_domain0, _x.analog_output_domain1, _x.analog_output0, _x.analog_output1, _x.masterboard_temperature, _x.robot_voltage_48V, _x.robot_current, _x.master_io_current, _x.master_safety_state, _x.master_onoff_state,) = _get_struct_2I2b2d2b2d4f2B().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -167,7 +167,7 @@ uint8 master_onoff_state
       (_x.digital_input_bits, _x.digital_output_bits, _x.analog_input_range0, _x.analog_input_range1, _x.analog_input0, _x.analog_input1, _x.analog_output_domain0, _x.analog_output_domain1, _x.analog_output0, _x.analog_output1, _x.masterboard_temperature, _x.robot_voltage_48V, _x.robot_current, _x.master_io_current, _x.master_safety_state, _x.master_onoff_state,) = _get_struct_2I2b2d2b2d4f2B().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

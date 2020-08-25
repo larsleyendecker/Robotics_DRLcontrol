@@ -9,7 +9,7 @@ import struct
 class EstimatedPose(genpy.Message):
   _md5sum = "e46dd9c8f4990ebb7cf2458b8e07e095"
   _type = "realsense2_camera/EstimatedPose"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """float64 tx
 float64 ty
 float64 tz
@@ -37,7 +37,7 @@ float64 rz
     """
     if args or kwds:
       super(EstimatedPose, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.tx is None:
         self.tx = 0.
       if self.ty is None:
@@ -88,7 +88,7 @@ float64 rz
       (_x.tx, _x.ty, _x.tz, _x.rx, _x.ry, _x.rz,) = _get_struct_6d().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -117,7 +117,7 @@ float64 rz
       (_x.tx, _x.ty, _x.tz, _x.rx, _x.ry, _x.rz,) = _get_struct_6d().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

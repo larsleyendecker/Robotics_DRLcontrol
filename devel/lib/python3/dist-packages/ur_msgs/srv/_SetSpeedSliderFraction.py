@@ -9,11 +9,11 @@ import struct
 class SetSpeedSliderFractionRequest(genpy.Message):
   _md5sum = "64134244ab4dfc72a3406fe06d580274"
   _type = "ur_msgs/SetSpeedSliderFractionRequest"
-  _has_header = False #flag to mark the presence of a Header object
-  _full_text = """
-
-
-
+  _has_header = False  # flag to mark the presence of a Header object
+  _full_text = """# Set the speed slider on the teach pendant to the specified value.
+#
+# Values for 'speed_slider_fraction' must be from [0; 1.0]; values outside this
+# valid range will result in an error being returned to the caller.
 
 float64 speed_slider_fraction
 """
@@ -36,7 +36,7 @@ float64 speed_slider_fraction
     """
     if args or kwds:
       super(SetSpeedSliderFractionRequest, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.speed_slider_fraction is None:
         self.speed_slider_fraction = 0.
     else:
@@ -54,7 +54,8 @@ float64 speed_slider_fraction
     :param buff: buffer, ``StringIO``
     """
     try:
-      buff.write(_get_struct_d().pack(self.speed_slider_fraction))
+      _x = self.speed_slider_fraction
+      buff.write(_get_struct_d().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -70,7 +71,7 @@ float64 speed_slider_fraction
       (self.speed_slider_fraction,) = _get_struct_d().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -80,7 +81,8 @@ float64 speed_slider_fraction
     :param numpy: numpy python module
     """
     try:
-      buff.write(_get_struct_d().pack(self.speed_slider_fraction))
+      _x = self.speed_slider_fraction
+      buff.write(_get_struct_d().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -97,7 +99,7 @@ float64 speed_slider_fraction
       (self.speed_slider_fraction,) = _get_struct_d().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():
@@ -120,7 +122,7 @@ import struct
 class SetSpeedSliderFractionResponse(genpy.Message):
   _md5sum = "358e233cde0c8a8bcfea4ce193f8fc15"
   _type = "ur_msgs/SetSpeedSliderFractionResponse"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """bool success
 
 """
@@ -143,7 +145,7 @@ class SetSpeedSliderFractionResponse(genpy.Message):
     """
     if args or kwds:
       super(SetSpeedSliderFractionResponse, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.success is None:
         self.success = False
     else:
@@ -161,7 +163,8 @@ class SetSpeedSliderFractionResponse(genpy.Message):
     :param buff: buffer, ``StringIO``
     """
     try:
-      buff.write(_get_struct_B().pack(self.success))
+      _x = self.success
+      buff.write(_get_struct_B().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -178,7 +181,7 @@ class SetSpeedSliderFractionResponse(genpy.Message):
       self.success = bool(self.success)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -188,7 +191,8 @@ class SetSpeedSliderFractionResponse(genpy.Message):
     :param numpy: numpy python module
     """
     try:
-      buff.write(_get_struct_B().pack(self.success))
+      _x = self.success
+      buff.write(_get_struct_B().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -206,7 +210,7 @@ class SetSpeedSliderFractionResponse(genpy.Message):
       self.success = bool(self.success)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

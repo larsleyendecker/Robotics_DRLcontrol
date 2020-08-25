@@ -9,7 +9,7 @@ import struct
 class Digital(genpy.Message):
   _md5sum = "83707be3fa18d2ffe57381ea034aa262"
   _type = "ur_msgs/Digital"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """uint8 pin
 bool state
 """
@@ -32,7 +32,7 @@ bool state
     """
     if args or kwds:
       super(Digital, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.pin is None:
         self.pin = 0
       if self.state is None:
@@ -72,7 +72,7 @@ bool state
       self.state = bool(self.state)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -102,7 +102,7 @@ bool state
       self.state = bool(self.state)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

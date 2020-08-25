@@ -9,7 +9,7 @@ import struct
 class IMUInfo(genpy.Message):
   _md5sum = "a02adb3a99530b11ba18a16f40f9512a"
   _type = "realsense2_camera/IMUInfo"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """string frame_id
 float64[12] data
 float64[3] noise_variances
@@ -34,7 +34,7 @@ float64[3] bias_variances
     """
     if args or kwds:
       super(IMUInfo, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.frame_id is None:
         self.frame_id = ''
       if self.data is None:
@@ -100,7 +100,7 @@ float64[3] bias_variances
       self.bias_variances = _get_struct_3d().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -150,7 +150,7 @@ float64[3] bias_variances
       self.bias_variances = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=3)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

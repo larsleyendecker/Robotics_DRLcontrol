@@ -11,7 +11,7 @@ import std_msgs.msg
 class TFMessage(genpy.Message):
   _md5sum = "94810edda583a504dfda3829e70d7eec"
   _type = "tf2_msgs/TFMessage"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """geometry_msgs/TransformStamped[] transforms
 
 ================================================================================
@@ -90,7 +90,7 @@ float64 w
     """
     if args or kwds:
       super(TFMessage, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.transforms is None:
         self.transforms = []
     else:
@@ -112,7 +112,8 @@ float64 w
       buff.write(_struct_I.pack(length))
       for val1 in self.transforms:
         _v1 = val1.header
-        buff.write(_get_struct_I().pack(_v1.seq))
+        _x = _v1.seq
+        buff.write(_get_struct_I().pack(_x))
         _v2 = _v1.stamp
         _x = _v2
         buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
@@ -194,7 +195,7 @@ float64 w
         self.transforms.append(val1)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -208,7 +209,8 @@ float64 w
       buff.write(_struct_I.pack(length))
       for val1 in self.transforms:
         _v11 = val1.header
-        buff.write(_get_struct_I().pack(_v11.seq))
+        _x = _v11.seq
+        buff.write(_get_struct_I().pack(_x))
         _v12 = _v11.stamp
         _x = _v12
         buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
@@ -291,12 +293,18 @@ float64 w
         self.transforms.append(val1)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
+_struct_2I = None
+def _get_struct_2I():
+    global _struct_2I
+    if _struct_2I is None:
+        _struct_2I = struct.Struct("<2I")
+    return _struct_2I
 _struct_3d = None
 def _get_struct_3d():
     global _struct_3d
@@ -309,9 +317,3 @@ def _get_struct_4d():
     if _struct_4d is None:
         _struct_4d = struct.Struct("<4d")
     return _struct_4d
-_struct_2I = None
-def _get_struct_2I():
-    global _struct_2I
-    if _struct_2I is None:
-        _struct_2I = struct.Struct("<2I")
-    return _struct_2I

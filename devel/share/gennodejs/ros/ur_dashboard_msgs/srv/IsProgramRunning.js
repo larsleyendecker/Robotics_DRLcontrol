@@ -143,8 +143,8 @@ class IsProgramRunningResponse {
     // Returns full string definition for message
     return `
     string answer
-    bool program_running
-    bool success
+    bool program_running # is a program running?
+    bool success # Did the dashboard server call succeed?
     
     
     `;

@@ -9,7 +9,7 @@ import struct
 class FrameGraphRequest(genpy.Message):
   _md5sum = "d41d8cd98f00b204e9800998ecf8427e"
   _type = "tf2_msgs/FrameGraphRequest"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """"""
   __slots__ = []
   _slot_types = []
@@ -56,7 +56,7 @@ class FrameGraphRequest(genpy.Message):
       end = 0
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -80,7 +80,7 @@ class FrameGraphRequest(genpy.Message):
       end = 0
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():
@@ -97,7 +97,7 @@ import struct
 class FrameGraphResponse(genpy.Message):
   _md5sum = "437ea58e9463815a0d511c7326b686b0"
   _type = "tf2_msgs/FrameGraphResponse"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """string frame_yaml
 
 """
@@ -120,7 +120,7 @@ class FrameGraphResponse(genpy.Message):
     """
     if args or kwds:
       super(FrameGraphResponse, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.frame_yaml is None:
         self.frame_yaml = ''
     else:
@@ -165,7 +165,7 @@ class FrameGraphResponse(genpy.Message):
         self.frame_yaml = str[start:end]
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -203,7 +203,7 @@ class FrameGraphResponse(genpy.Message):
         self.frame_yaml = str[start:end]
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

@@ -133,8 +133,8 @@
       "---
 string answer
 string program_name
-bool program_saved
-bool success
+bool program_saved # is the current program saved?
+bool success # Did the dashboard server call succeed?
 
 ")
 
@@ -144,8 +144,8 @@ bool success
       "---
 string answer
 string program_name
-bool program_saved
-bool success
+bool program_saved # is the current program saved?
+bool success # Did the dashboard server call succeed?
 
 ")
 

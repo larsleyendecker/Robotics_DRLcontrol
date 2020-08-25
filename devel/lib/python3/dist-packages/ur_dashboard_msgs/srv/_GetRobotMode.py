@@ -9,7 +9,7 @@ import struct
 class GetRobotModeRequest(genpy.Message):
   _md5sum = "d41d8cd98f00b204e9800998ecf8427e"
   _type = "ur_dashboard_msgs/GetRobotModeRequest"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """"""
   __slots__ = []
   _slot_types = []
@@ -56,7 +56,7 @@ class GetRobotModeRequest(genpy.Message):
       end = 0
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -80,7 +80,7 @@ class GetRobotModeRequest(genpy.Message):
       end = 0
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():
@@ -98,7 +98,7 @@ import ur_dashboard_msgs.msg
 class GetRobotModeResponse(genpy.Message):
   _md5sum = "ef94c03da2e53bb8c576236bb003fe8a"
   _type = "ur_dashboard_msgs/GetRobotModeResponse"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """RobotMode robot_mode
 string answer
 bool success
@@ -139,7 +139,7 @@ int8 mode
     """
     if args or kwds:
       super(GetRobotModeResponse, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.robot_mode is None:
         self.robot_mode = ur_dashboard_msgs.msg.RobotMode()
       if self.answer is None:
@@ -163,14 +163,16 @@ int8 mode
     :param buff: buffer, ``StringIO``
     """
     try:
-      buff.write(_get_struct_b().pack(self.robot_mode.mode))
+      _x = self.robot_mode.mode
+      buff.write(_get_struct_b().pack(_x))
       _x = self.answer
       length = len(_x)
       if python3 or type(_x) == unicode:
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
-      buff.write(_get_struct_B().pack(self.success))
+      _x = self.success
+      buff.write(_get_struct_B().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -201,7 +203,7 @@ int8 mode
       self.success = bool(self.success)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -211,14 +213,16 @@ int8 mode
     :param numpy: numpy python module
     """
     try:
-      buff.write(_get_struct_b().pack(self.robot_mode.mode))
+      _x = self.robot_mode.mode
+      buff.write(_get_struct_b().pack(_x))
       _x = self.answer
       length = len(_x)
       if python3 or type(_x) == unicode:
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
-      buff.write(_get_struct_B().pack(self.success))
+      _x = self.success
+      buff.write(_get_struct_B().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -250,24 +254,24 @@ int8 mode
       self.success = bool(self.success)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_b = None
-def _get_struct_b():
-    global _struct_b
-    if _struct_b is None:
-        _struct_b = struct.Struct("<b")
-    return _struct_b
 _struct_B = None
 def _get_struct_B():
     global _struct_B
     if _struct_B is None:
         _struct_B = struct.Struct("<B")
     return _struct_B
+_struct_b = None
+def _get_struct_b():
+    global _struct_b
+    if _struct_b is None:
+        _struct_b = struct.Struct("<b")
+    return _struct_b
 class GetRobotMode(object):
   _type          = 'ur_dashboard_msgs/GetRobotMode'
   _md5sum = 'ef94c03da2e53bb8c576236bb003fe8a'

@@ -146,7 +146,7 @@ struct Definition< ::ur_dashboard_msgs::RawRequestRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "\n"
+    return "# This service is there to support any dashboard query not explicitly supported\n"
 "string query\n"
 ;
   }

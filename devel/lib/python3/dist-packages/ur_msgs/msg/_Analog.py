@@ -9,7 +9,7 @@ import struct
 class Analog(genpy.Message):
   _md5sum = "f41c08a810adf63713aec88712cd553d"
   _type = "ur_msgs/Analog"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """uint8 VOLTAGE=0
 uint8 CURRENT=1
 
@@ -40,7 +40,7 @@ float32 state
     """
     if args or kwds:
       super(Analog, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.pin is None:
         self.pin = 0
       if self.domain is None:
@@ -82,7 +82,7 @@ float32 state
       (_x.pin, _x.domain, _x.state,) = _get_struct_2Bf().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -111,7 +111,7 @@ float32 state
       (_x.pin, _x.domain, _x.state,) = _get_struct_2Bf().unpack(str[start:end])
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

@@ -10,7 +10,7 @@ import ur_msgs.msg
 class IOStates(genpy.Message):
   _md5sum = "3033784e7041da89491b97cc4c1105b5"
   _type = "ur_msgs/IOStates"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """Digital[] digital_in_states
 Digital[] digital_out_states
 Digital[] flag_states
@@ -50,7 +50,7 @@ float32 state
     """
     if args or kwds:
       super(IOStates, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.digital_in_states is None:
         self.digital_in_states = []
       if self.digital_out_states is None:
@@ -185,7 +185,7 @@ float32 state
         self.analog_out_states.append(val1)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -301,21 +301,21 @@ float32 state
         self.analog_out_states.append(val1)
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2Bf = None
-def _get_struct_2Bf():
-    global _struct_2Bf
-    if _struct_2Bf is None:
-        _struct_2Bf = struct.Struct("<2Bf")
-    return _struct_2Bf
 _struct_2B = None
 def _get_struct_2B():
     global _struct_2B
     if _struct_2B is None:
         _struct_2B = struct.Struct("<2B")
     return _struct_2B
+_struct_2Bf = None
+def _get_struct_2Bf():
+    global _struct_2Bf
+    if _struct_2Bf is None:
+        _struct_2Bf = struct.Struct("<2Bf")
+    return _struct_2Bf

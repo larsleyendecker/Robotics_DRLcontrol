@@ -166,8 +166,8 @@ struct Definition< ::ur_dashboard_msgs::IsProgramSavedResponse_<ContainerAllocat
   {
     return "string answer\n"
 "string program_name\n"
-"bool program_saved\n"
-"bool success\n"
+"bool program_saved # is the current program saved?\n"
+"bool success # Did the dashboard server call succeed?\n"
 "\n"
 ;
   }

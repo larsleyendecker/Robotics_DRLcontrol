@@ -107,7 +107,7 @@
 (setf (get ur_dashboard_msgs::RawRequestRequest :md5sum-) "3f9d6cecb9ae062492929b790df89058")
 (setf (get ur_dashboard_msgs::RawRequestRequest :datatype-) "ur_dashboard_msgs/RawRequestRequest")
 (setf (get ur_dashboard_msgs::RawRequestRequest :definition-)
-      "
+      "# This service is there to support any dashboard query not explicitly supported
 string query
 ---
 string answer
@@ -117,7 +117,7 @@ string answer
 (setf (get ur_dashboard_msgs::RawRequestResponse :md5sum-) "3f9d6cecb9ae062492929b790df89058")
 (setf (get ur_dashboard_msgs::RawRequestResponse :datatype-) "ur_dashboard_msgs/RawRequestResponse")
 (setf (get ur_dashboard_msgs::RawRequestResponse :definition-)
-      "
+      "# This service is there to support any dashboard query not explicitly supported
 string query
 ---
 string answer

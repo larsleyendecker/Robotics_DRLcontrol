@@ -146,7 +146,7 @@ struct Definition< ::ur_dashboard_msgs::LoadRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "\n"
+    return "# Service to load programs or installations\n"
 "string filename\n"
 ;
   }

@@ -61,10 +61,10 @@
   "abbee7d5c683c0b3af261ba331da1fbb")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<Load-request>)))
   "Returns full string definition for message of type '<Load-request>"
-  (cl:format cl:nil "~%string filename~%~%~%"))
+  (cl:format cl:nil "# Service to load programs or installations~%string filename~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'Load-request)))
   "Returns full string definition for message of type 'Load-request"
-  (cl:format cl:nil "~%string filename~%~%~%"))
+  (cl:format cl:nil "# Service to load programs or installations~%string filename~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <Load-request>))
   (cl:+ 0
      4 (cl:length (cl:slot-value msg 'filename))

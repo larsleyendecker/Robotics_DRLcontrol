@@ -154,10 +154,10 @@
   "e922e4e4f5e4157c23417860c8b2336a")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<IsProgramSaved-response>)))
   "Returns full string definition for message of type '<IsProgramSaved-response>"
-  (cl:format cl:nil "string answer~%string program_name~%bool program_saved~%bool success~%~%~%~%"))
+  (cl:format cl:nil "string answer~%string program_name~%bool program_saved # is the current program saved?~%bool success # Did the dashboard server call succeed?~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'IsProgramSaved-response)))
   "Returns full string definition for message of type 'IsProgramSaved-response"
-  (cl:format cl:nil "string answer~%string program_name~%bool program_saved~%bool success~%~%~%~%"))
+  (cl:format cl:nil "string answer~%string program_name~%bool program_saved # is the current program saved?~%bool success # Did the dashboard server call succeed?~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <IsProgramSaved-response>))
   (cl:+ 0
      4 (cl:length (cl:slot-value msg 'answer))

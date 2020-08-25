@@ -9,7 +9,7 @@ import struct
 class ProgramState(genpy.Message):
   _md5sum = "0cf2a8b9397741f9e4ac8b71fd354966"
   _type = "ur_dashboard_msgs/ProgramState"
-  _has_header = False #flag to mark the presence of a Header object
+  _has_header = False  # flag to mark the presence of a Header object
   _full_text = """string STOPPED=STOPPED
 string PLAYING=PLAYING
 string PAUSED=PAUSED
@@ -41,7 +41,7 @@ string state
     """
     if args or kwds:
       super(ProgramState, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
+      # message fields cannot be None, assign default values for those that are
       if self.state is None:
         self.state = ''
     else:
@@ -86,7 +86,7 @@ string state
         self.state = str[start:end]
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 
   def serialize_numpy(self, buff, numpy):
@@ -124,7 +124,7 @@ string state
         self.state = str[start:end]
       return self
     except struct.error as e:
-      raise genpy.DeserializationError(e) #most likely buffer underfill
+      raise genpy.DeserializationError(e)  # most likely buffer underfill
 
 _struct_I = genpy.struct_I
 def _get_struct_I():

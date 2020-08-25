@@ -68,7 +68,7 @@ class LoadRequest {
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    
+    # Service to load programs or installations
     string filename
     
     `;

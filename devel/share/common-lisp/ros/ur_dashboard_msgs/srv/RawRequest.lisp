@@ -61,10 +61,10 @@
   "3f9d6cecb9ae062492929b790df89058")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<RawRequest-request>)))
   "Returns full string definition for message of type '<RawRequest-request>"
-  (cl:format cl:nil "~%string query~%~%~%"))
+  (cl:format cl:nil "# This service is there to support any dashboard query not explicitly supported~%string query~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'RawRequest-request)))
   "Returns full string definition for message of type 'RawRequest-request"
-  (cl:format cl:nil "~%string query~%~%~%"))
+  (cl:format cl:nil "# This service is there to support any dashboard query not explicitly supported~%string query~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <RawRequest-request>))
   (cl:+ 0
      4 (cl:length (cl:slot-value msg 'query))
