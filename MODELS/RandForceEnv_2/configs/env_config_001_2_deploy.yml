@@ -15,7 +15,7 @@ Learning :
     final_distance_threshold : 0.005
     fail_threshold : 0.25
 n_actions : 6
-corrective : True
+corrective : False
 vary : False
 dx_max : 0.0005 
 Reward : 
