@@ -1,0 +1,37 @@
+# v003 : Noisy Position Environment
+info : "1208_1002_force" # Format: mmdd_hhmm_Description
+model_xml_file : "ur10_heg_position.xml"
+initial_qpos : [0, -1.3, 2.1, -0.80, 1.5708, 0]
+reward_type : "dense"
+ctrl_type : "cartesian"
+SEED : 1794
+n_substeps : 80
+action_rate : 1
+Learning :
+    distance_threshold : 0.005
+    curriculum_learning : False
+    cur_eps_threshold : 100
+    initial_distance_threshold : 0.015
+    final_distance_threshold : 0.005
+    fail_threshold : 0.25
+n_actions : 6
+corrective : False
+vary : False
+dx_max : 0.001
+Reward : 
+    R1 : 1
+    R2 : 0.00025
+    success_reward : 250
+Noise:
+    f_mean_si : 0.0 #N
+    f_std_si : 0.0 #N
+    t_mean_si : 0.0 #Nm
+    t_std_si : 0.0 #Nm
+    pos_mean_si : 0.0 
+    pos_std_si : 0.0 #m
+    rot_mean_si : 0.0
+    rot_std_si : 0.0 #deg
+    dq_mean_si : 0.0
+    dq_std_si : 0.0
+Saving : False
+
