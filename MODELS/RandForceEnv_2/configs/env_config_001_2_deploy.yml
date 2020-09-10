@@ -17,7 +17,7 @@ Learning :
 n_actions : 6
 corrective : False
 vary : False
-dx_max : 0.0005 
+dx_max : 0.0001
 Reward : 
     R1 : 1
     R2 : 0.00025
