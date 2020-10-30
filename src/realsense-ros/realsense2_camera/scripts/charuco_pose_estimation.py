@@ -142,7 +142,7 @@ class PoseEstimator:
 
         tvecF, rvecF = self.filter_pose(tvec, rvec)
         command = EstimatedPose()
-        tx = tvecF[0] + self.offset["tx"] #- 0.18
+        tx = tvecF[0] + self.offset["tx"]
         ty = tvecF[1] + self.offset["ty"]
         tz = tvecF[2] + self.offset["tz"]
         rx = rvecF[0] + self.offset["rx"]
@@ -150,9 +150,9 @@ class PoseEstimator:
         rz = rvecF[2] + self.offset["rz"] + self.rx_correction
 
         if self.cos_transformation:
-            command.tx = tz + self.correction["tx"]
-            command.ty = tx + self.correction["ty"]
-            command.tz = ty + self.correction["tz"] 
+            command.tx = tz + self.correction["tx"] + 0.003
+            command.ty = tx + self.correction["ty"] + 0.00024
+            command.tz = ty + self.correction["tz"] + 0.00065
             command.rx = -rz + self.correction["rx"]
             command.ry = -rx + self.correction["ry"]
             command.rz = -ry + self.correction["rz"]
